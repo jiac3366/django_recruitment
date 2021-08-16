@@ -1,0 +1,45 @@
+version: "3.2"
+services:
+  web:
+    image: "zq/meetingroom0531"
+    container_name: meetingroom0316
+    entrypoint: ["/bin/sh", "/data/meetingroom/start.local.bat"]
+    environment:
+      - server_params=--settings=settings.local
+    volumes:
+      - .:/data/meetingroom
+      - ./logs:/data/logs/meetingroom/
+    ports:
+      - "10086:8000"
+    depends_on:
+      - redis
+      - celery
+      - flower
+      
+  redis:
+    image: "redis:alpine"
+    container_name: redis
+    ports:
+      - "6379:6379"
+
+  celery:
+    image: "zq/meetingroom0531"
+    container_name: celery
+    volumes:
+      - .:/data/meetingroom
+      - ./logs:/data/logs/meetingroom/
+    entrypoint: ["/bin/sh", "/data/meetingroom/worker.start.sh"]
+    depends_on: 
+      - redis
+      
+  flower:
+    image: "zq/meetingroom0531"
+    container_name: flower
+    ports:
+      - "5555:5555"
+    volumes:
+      - .:/data/meetingroom
+      - /data/logs/meetingroom/
+    entrypoint: ["/bin/sh", "/data/meetingroom/flower.start.sh"]
+    depends_on: 
+      - redis

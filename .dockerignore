@@ -1,0 +1,8 @@
+
+.git
+.history
+**/__pycache__
+slides
+snapshot
+media
+static

@@ -1,0 +1,9 @@
+.idea/
+.vscode/
+__pycache__/
+/settings/local.py
+/wangzhe/
+/static/
+./candidates.csv
+./nginx.conf
+./Dockerfile1
