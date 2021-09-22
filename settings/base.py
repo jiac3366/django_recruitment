@@ -114,7 +114,8 @@ LOGGING = {
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://redis:6379",
+        # "LOCATION": "redis://redis:6379",  # docker-compose
+        "LOCATION": "redis://127.0.0.1:6379",
         'TIMEOUT': 60,  # default expire time per api call
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
