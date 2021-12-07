@@ -1,14 +1,14 @@
-## 系统简介
+## System introduction
 
-一直想做一款人事招聘系统，看了很多优秀的python开源项目，为了锻炼提高开源能力，还是决定利用空闲休息时间仿照着其他开源系统自己写了一套后台系统。技术栈包括Django + Redis + Celery + MySQL(前期用SQLite)。
+Open source projects have always been something I want to do. I have seen many excellent Python open source projects. In order to exercise and improve the open source ability, I decided to use my spare time to write a background system modeled on other excellent open source systems. The technology stack includes Django + redis + celery + MySQL (SQLite is used in the early stage).
 
-## 系统架构
+## System architecture 
 
 ![image-20211202081015030](https://cdn.jsdelivr.net/gh/jiac3366/image-host@master/mysqlbizhbihui/微信图片_202112020851041.447l0c2ht1c0.png)
 
 
 
-## 内置功能
+## Built in function
 
 ![image-20211202080636982](https://cdn.jsdelivr.net/gh/jiac3366/image-host@master/recruitment/image.18f8q2k4cek.png)
 
@@ -24,7 +24,7 @@
 11.  云原生部署，提供部署至Docker的镜像，以及部署K8s环境的Yaml配置。
 11.  CI/CD，使用Jenkins Pileline实施Devops，后期可以使用Github Action / Gitlab CICD
 
-## 演示图
+## Demo
 
 <table>
     <tr>
@@ -43,7 +43,7 @@
 
 
 
-## 在线体验
+## Experience
 
 - guest/cadmin1234
 - 演示地址：http://47.113.203.197:10086/
