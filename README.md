@@ -46,7 +46,7 @@ Open source projects have always been something I want to do. I have seen many e
 ## Experience
 
 - guest/cadmin1234
-- 演示地址：http://recruitment.jiac.online
+- 演示地址：https://recruitment.jiac.online/
 
 
 
