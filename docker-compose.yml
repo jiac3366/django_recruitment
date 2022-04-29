@@ -1,0 +1,55 @@
+version: "3.2"
+services:
+  web:
+    # image: "zq/meetingroom0531"
+    image: "463045792/recruitment_system:latest"
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile
+    entrypoint: [ "/bin/sh", "/data/meetingroom/start.local.bat" ]
+    environment:
+      - server_params=--settings=settings.local
+    volumes:
+      - .:/data/meetingroom
+      - ./logs:/data/logs/meetingroom/
+    ports:
+      - "3300:8000"
+    depends_on:
+      - redis
+      - celery
+      - flower
+
+  redis:
+    image: "redis:alpine"
+    container_name: redis
+    ports:
+      - "6380:6379"
+
+  celery:
+    image: "463045792/recruitment_system:latest"
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile
+    container_name: celery
+    volumes:
+      - .:/data/meetingroom
+      - ./logs:/data/logs/meetingroom/
+      # - ./static:/data/logs/meetingroom/static/
+    entrypoint: [ "/bin/sh", "/data/meetingroom/worker.start.sh" ]
+    depends_on:
+      - redis
+
+  flower:
+    image: "463045792/recruitment_system:latest"
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile
+    container_name: flower
+    ports:
+      - "5555:5555"
+    volumes:
+      - .:/data/meetingroom
+      - /data/logs/meetingroom/
+    entrypoint: [ "/bin/sh", "/data/meetingroom/flower.start.sh" ]
+    depends_on:
+      - redis
