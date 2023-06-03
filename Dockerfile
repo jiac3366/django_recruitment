@@ -13,7 +13,7 @@ RUN apk add --update --no-cache curl jq py3-configobj py3-pip py3-setuptools pyt
   && rm -rf /var/cache/apk/*
 COPY . .
 EXPOSE 8000
-CMD ["/bin/sh", "/data/meetingroom/start.local.bat"]
+CMD ["/bin/sh", "/data/meetingroom/bash_command/start.local.bat"]
 
 # apk add --update --no-cache add安装之前先最新本地镜像源，不用任何本地的缓存
 # RUN 是在 docker build时运行

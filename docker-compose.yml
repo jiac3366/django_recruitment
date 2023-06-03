@@ -3,7 +3,7 @@ services:
   web:
     image: "zq/meetingroom0531"
     container_name: meetingroom0316
-    entrypoint: ["/bin/sh", "/data/meetingroom/start.local.bat"]
+    entrypoint: ["/bin/sh", "/data/meetingroom/bash_command/start.local.bat"]
     environment:
       - server_params=--settings=settings.local
     volumes:
@@ -28,7 +28,7 @@ services:
     volumes:
       - .:/data/meetingroom
       - ./logs:/data/logs/meetingroom/
-    entrypoint: ["/bin/sh", "/data/meetingroom/worker.start.sh"]
+    entrypoint: ["/bin/sh", "/data/meetingroom/bash_command/worker.start.sh"]
     depends_on: 
       - redis
       
@@ -40,6 +40,6 @@ services:
     volumes:
       - .:/data/meetingroom
       - /data/logs/meetingroom/
-    entrypoint: ["/bin/sh", "/data/meetingroom/flower.start.sh"]
+    entrypoint: ["/bin/sh", "/data/meetingroom/bash_command/flower.start.sh"]
     depends_on: 
       - redis
